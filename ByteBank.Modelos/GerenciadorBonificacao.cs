@@ -16,7 +16,8 @@ namespace ByteBank.Modelos
             _totalBonificacao += funcionario.GetBonificacao();
         }
 
-        public double GetTotalBonificacao()
+        //Visível somente no projeto Modelos
+        internal double GetTotalBonificacao()
         {
             return _totalBonificacao;
         }

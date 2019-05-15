@@ -19,6 +19,10 @@ namespace ByteBank.SistemaAgencia
 
             GerenteDeConta gerente = new GerenteDeConta("2432345254");
             gerente.Autenticar("123");
+
+            Auxiliar aux = new Auxiliar("23344365");
+            aux.AumentarSalario();
+            
             
 
             Console.ReadLine();
