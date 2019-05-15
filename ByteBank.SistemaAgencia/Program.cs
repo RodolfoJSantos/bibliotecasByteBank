@@ -12,18 +12,16 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            ContaCorrente conta = new ContaCorrente(123, 12345);
 
+            DateTime dataPagamento = new DateTime(2019, 10, 15);
+            DateTime dataCorrente = DateTime.Now;
 
-            Console.WriteLine(conta.Numero);
+            Console.WriteLine(dataCorrente);
+            Console.WriteLine(dataPagamento);
 
-            GerenteDeConta gerente = new GerenteDeConta("2432345254");
-            gerente.Autenticar("123");
+            TimeSpan diferenca = dataPagamento - dataCorrente;
+            Console.WriteLine("Vencimento em: " + diferenca);
 
-            Auxiliar aux = new Auxiliar("23344365");
-            aux.AumentarSalario();
-            
-            
 
             Console.ReadLine();
         }
