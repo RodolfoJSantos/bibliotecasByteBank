@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace ByteBank.Modelos
 {
     /// <summary>
+<<<<<<< HEAD
     /// Define uma Conta Corrente do banco Byte Bank
+=======
+    /// Define uma conta corrente do banco Byte Bank
+>>>>>>> no work
     /// </summary>
     public class ContaCorrente
     {

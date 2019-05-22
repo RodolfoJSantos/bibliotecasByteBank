@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using ByteBank.Modelos.Funcionarios;
+using Humanizer;
 
 namespace ByteBank.SistemaAgencia
 {
@@ -12,6 +13,7 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+
 
             string urlParametros = "http://www.bytebank.com/cambio?moedaOrigem=dolar&moedaDestino=real&valor=1500";
             ExtratorValorDeArgumentosURL extratorArgumentos = new ExtratorValorDeArgumentosURL(urlParametros);
@@ -60,9 +62,25 @@ namespace ByteBank.SistemaAgencia
 
             Console.WriteLine(string.IsNullOrEmpty(textoVazio));
             Console.WriteLine(string.IsNullOrEmpty(textoNulo));
-            Console.WriteLine(string.IsNullOrEmpty(texto));
-  
 
+
+            //Teste Remoção
+
+            string testeRemocao = "primeiraParte&12345";
+
+            int indiceEComercial = testeRemocao.IndexOf('&');
+
+            Console.WriteLine(testeRemocao.Remove(indiceEComercial, 4));
+
+            Console.ReadLine();
+
+            string url = "pagina?argumentos";
+            int indexInterrogacao = url.IndexOf('?');
+            string argumentos = url.Substring(indexInterrogacao + 1);
+
+
+
+            Console.WriteLine(argumentos);
 
             Console.ReadLine();
         }
