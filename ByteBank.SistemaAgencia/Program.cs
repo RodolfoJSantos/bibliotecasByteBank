@@ -13,14 +13,55 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
         {
 
-            DateTime dataPagamento = new DateTime(2019, 10, 15);
-            DateTime dataCorrente = DateTime.Now;
+            string urlParametros = "http://www.bytebank.com/cambio?moedaOrigem=dolar&moedaDestino=real&valor=1500";
+            ExtratorValorDeArgumentosURL extratorArgumentos = new ExtratorValorDeArgumentosURL(urlParametros);
 
-            Console.WriteLine(dataCorrente);
-            Console.WriteLine(dataPagamento);
+            string valor0 = extratorArgumentos.GetValor("moedaOrigem");
+            Console.WriteLine("Valor do moedaOrigem: " + valor0);
 
-            TimeSpan diferenca = dataPagamento - dataCorrente;
-            Console.WriteLine("Vencimento em: " + diferenca);
+            string valor1 = extratorArgumentos.GetValor("moedaDestino");
+            Console.WriteLine("Valor do moedaDestino: " + valor1);
+
+            string valor2 = extratorArgumentos.GetValor("VALOR");
+            Console.WriteLine("Parametro valor: " + valor2);
+            Console.ReadLine();
+
+
+            //Testando Replace
+            string palavraOrigem = "PALAVRA";
+            string termoBusca = "pa";
+            Console.WriteLine(termoBusca.ToUpper());
+            Console.WriteLine(palavraOrigem.ToLower());
+
+            termoBusca = termoBusca.Replace('p', 'P');
+            Console.WriteLine(termoBusca);
+            termoBusca = termoBusca.Replace('a', 'A');
+            Console.WriteLine(termoBusca);
+
+            Console.WriteLine(palavraOrigem.IndexOf(termoBusca));
+            Console.ReadLine();
+
+
+            string palavra = "moedaOrigem=real&moedaDestino=dolar";
+            string nomeArgumento = "moedaDestino";
+
+            int indice = palavra.IndexOf(nomeArgumento);
+            Console.WriteLine(indice);
+
+            Console.WriteLine("Tamanho da string " + palavra.Length);
+            Console.WriteLine(palavra.Substring(indice));
+            Console.WriteLine(palavra.Substring(indice + nomeArgumento.Length + 1));
+            Console.ReadLine();
+
+
+            string textoVazio = "";
+            string textoNulo = null;
+            string texto = "dsfgsdf";
+
+            Console.WriteLine(string.IsNullOrEmpty(textoVazio));
+            Console.WriteLine(string.IsNullOrEmpty(textoNulo));
+            Console.WriteLine(string.IsNullOrEmpty(texto));
+  
 
 
             Console.ReadLine();
