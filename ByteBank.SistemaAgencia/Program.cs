@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using ByteBank.Modelos.Funcionarios;
@@ -13,11 +14,47 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            Cliente carlos_1 = new Cliente();
+            carlos_1.Nome = "Carlos";
+            carlos_1.CPF = "458.623.120-03";
+            carlos_1.Profissao = "Designer";
 
-            string urlTeste = "https://www.bytebank.com/cambio";
-            int indiceByteBank = urlTeste.IndexOf("https://www.bytebank.com");
-            Console.WriteLine(indiceByteBank >= 0);
+            Cliente carlos_2 = new Cliente();
+            carlos_2.Nome = "Carlos";
+            carlos_2.CPF = "458.623.120-03";
+            carlos_2.Profissao = "Designer";
 
+            ContaCorrente conta = new ContaCorrente(123, 1234);
+
+            if (carlos_1.Equals(carlos_2))
+            {
+                Console.WriteLine("São iguais!");
+            }
+            else
+            {
+                Console.WriteLine("Não são iguais!");
+            }
+
+            Console.ReadLine();
+
+            Console.ReadLine();
+        }
+
+        public static void TestandoString()
+        {
+            //Ligue no número 4444-2222
+            //olá meu nome é Fulano, telefone 4444 3333
+
+
+            //string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]";
+            //string padrao = "[0-9]4[-][0-9][0-9][0-9][0-9]";
+            //string padrao = "[0-9]{4,5}[-][0-9]{4}";
+            //string padrao = "[0-9]{4,5}[-]{0,1}[0-9]{4}";
+            string padrao = "[0-9]{4,5}[-]?[0-9]{4}";
+            string textoDeTeste = "Meu nome é Guilherme, me ligue em 944844546";
+
+            Match resultado = Regex.Match(textoDeTeste, padrao);
+            Console.WriteLine(resultado.Value);
             Console.ReadLine();
 
             string urlParametros = "http://www.bytebank.com/cambio?moedaOrigem=dolar&moedaDestino=real&valor=1500";
