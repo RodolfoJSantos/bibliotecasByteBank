@@ -14,6 +14,28 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            ContaCorrente[] contas = new ContaCorrente[] 
+            {
+                new ContaCorrente(123, 4565),
+                new ContaCorrente(333, 2333),
+                new ContaCorrente(436, 0976),
+                new ContaCorrente(234, 4444),
+                new ContaCorrente(234, 4444)
+            };            
+
+            for (int i = 0; i < contas.Length; i++)
+            {
+                ContaCorrente contaAtual = contas[i];
+                Console.WriteLine($"Conta: {i}, Número: {contaAtual.Numero}");
+            }
+
+            Console.ReadLine();
+
+        }
+
+        public static void TestandoString()
+        {
+
             Cliente carlos_1 = new Cliente();
             carlos_1.Nome = "Carlos";
             carlos_1.CPF = "458.623.120-03";
@@ -38,10 +60,6 @@ namespace ByteBank.SistemaAgencia
             Console.ReadLine();
 
             Console.ReadLine();
-        }
-
-        public static void TestandoString()
-        {
             //Ligue no número 4444-2222
             //olá meu nome é Fulano, telefone 4444 3333
 
