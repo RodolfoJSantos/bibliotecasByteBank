@@ -42,7 +42,7 @@ namespace ByteBank.Modelos
         }
 
         /// <summary>
-        /// Cria uma instância de conta corrente com os argumentos informados
+        /// Construtor padrão
         /// </summary>
         /// <param name="agencia">Representa o valor da propriedade <see cref="Agencia"/>, e deve possuir um valor maior que zero.</param>
         /// <param name="numero">>Representa o valor da propriedade <see cref="Numero"/>, e deve possuir um valor maior que zero.</param>
@@ -115,6 +115,20 @@ namespace ByteBank.Modelos
         public override string ToString()
         {
             return $"Agência: {Agencia}, Número: {Numero}, Saldo: {Saldo}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            //usamos a conversão AS em vez de cast pois se passar outro tipo por engano
+            //(ex: Cliente) irá retornar nulo            
+            ContaCorrente outraConta = obj as ContaCorrente;
+            if (outraConta == null)
+            {
+                return false;
+            }
+
+            //retorna boleano é o que esperamos para este metodo
+            return Agencia == outraConta.Agencia && Numero == outraConta.Numero;
         }
     }
 

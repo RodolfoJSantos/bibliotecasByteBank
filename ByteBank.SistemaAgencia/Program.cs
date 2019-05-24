@@ -14,20 +14,20 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            ContaCorrente[] contas = new ContaCorrente[] 
-            {
-                new ContaCorrente(123, 4565),
-                new ContaCorrente(333, 2333),
-                new ContaCorrente(436, 0976),
-                new ContaCorrente(234, 4444),
-                new ContaCorrente(234, 4444)
-            };            
+            ListaDeContaCorrente lista = new ListaDeContaCorrente();
 
-            for (int i = 0; i < contas.Length; i++)
-            {
-                ContaCorrente contaAtual = contas[i];
-                Console.WriteLine($"Conta: {i}, Número: {contaAtual.Numero}");
-            }
+            ContaCorrente contaRemocao = new ContaCorrente(1111111, 111111);
+            lista.Adicionar(contaRemocao);
+            lista.Adicionar(new ContaCorrente(123, 4565));
+            lista.Adicionar(new ContaCorrente(123, 4565));
+            lista.Adicionar(new ContaCorrente(123, 4565));
+
+            lista.Exibe();
+
+            lista.Remover(contaRemocao);
+            Console.WriteLine("Após remoção do item!");
+
+            lista.Exibe();
 
             Console.ReadLine();
 
