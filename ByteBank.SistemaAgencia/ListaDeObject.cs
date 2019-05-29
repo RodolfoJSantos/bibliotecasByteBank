@@ -11,6 +11,13 @@ namespace ByteBank.SistemaAgencia
     {
         private object[] _itens;
         private int _proximaPosicao;
+        public int Tamanho
+        {
+            get
+            {
+                return _proximaPosicao;
+            }
+        }
 
         public ListaDeObject(int capacidadeInicial = 5)
         {
@@ -22,7 +29,7 @@ namespace ByteBank.SistemaAgencia
         {
             for (int i = 0; i < _proximaPosicao; i++)
             {
-                object conta = _itens[i];
+                object item = _itens[i];
                 Console.WriteLine($"");
             }
 
@@ -31,9 +38,17 @@ namespace ByteBank.SistemaAgencia
         public void Adicionar(object item)
         {
             VerificaCapacidade(_proximaPosicao + 1);
-            Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
+            //Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
             _itens[_proximaPosicao] = item;
             _proximaPosicao++;
+        }
+
+        public void AdicionarVarios(params object[] itens)
+        {
+            foreach (object item in itens)
+            {
+                Adicionar(item);
+            }
         }
 
         public void Remover(Object item)
@@ -74,15 +89,34 @@ namespace ByteBank.SistemaAgencia
                 novoTamanho = tamanhoCapacidade;
             }
 
-            Console.WriteLine("Aumentando Capacidade da Lista");
+           // Console.WriteLine("Aumentando Capacidade da Lista");
             Object[] novoArray = new Object[novoTamanho];
             for (int i = 0; i < _itens.Length; i++)
             {
-                Console.WriteLine('.');
+               // Console.WriteLine('.');
                 novoArray[i] = _itens[i];
             }
 
             _itens = novoArray;
+        }
+
+        public object this[int indice]
+        {
+            get
+            {
+                return GetItemNoIndice(indice);
+            }
+
+        }
+
+        public object GetItemNoIndice(int indice)
+        {
+            if (indice < 0 || indice >= _proximaPosicao)
+            {
+                throw new ArgumentException(nameof(indice));
+            }
+
+            return _itens[indice];
         }
     }
 }

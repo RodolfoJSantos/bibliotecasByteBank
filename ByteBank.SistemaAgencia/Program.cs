@@ -14,20 +14,19 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            ListaDeContaCorrente lista = new ListaDeContaCorrente();
+            ListaDeObject listaDeIdades = new ListaDeObject();
 
-            ContaCorrente contaRemocao = new ContaCorrente(1111111, 111111);
-            lista.Adicionar(contaRemocao);
-            lista.Adicionar(new ContaCorrente(123, 4565));
-            lista.Adicionar(new ContaCorrente(123, 4565));
-            lista.Adicionar(new ContaCorrente(123, 4565));
+            listaDeIdades.Adicionar(10);
+            listaDeIdades.Adicionar(5);
+            listaDeIdades.Adicionar(4);
+            listaDeIdades.AdicionarVarios(16, 23, 60);
+            listaDeIdades.Adicionar("texto teste");
 
-            lista.Exibe();
-
-            lista.Remover(contaRemocao);
-            Console.WriteLine("Após remoção do item!");
-
-            lista.Exibe();
+            for (int i = 0; i < listaDeIdades.Tamanho; i++)
+            {
+                int idade = (int)listaDeIdades[i];
+                Console.WriteLine($"Idade no indice {i}: {idade}");
+            }
 
             Console.ReadLine();
 
