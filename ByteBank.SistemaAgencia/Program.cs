@@ -32,6 +32,26 @@ namespace ByteBank.SistemaAgencia
 
         }
 
+        static int SomaVarios(params int[] numeros)
+        {
+            int acumulador = 0;
+            foreach (int numero in numeros)
+            {
+                acumulador += numero;
+            }
+            return acumulador;
+        }
+
+        public static void SomarNumeros(int[] numeros)
+        {
+            for (int i = 0; i < numeros.Length -1; i+=2)
+            {
+                int n1 = numeros[i];
+                int n2 = numeros[i + 1];
+                int soma = n1 + n2;
+                Console.WriteLine($"soma do {i}º com o {i+1}° número = " +soma);
+            }
+        }
 
         public static void TestandoArrayConta()
         {
