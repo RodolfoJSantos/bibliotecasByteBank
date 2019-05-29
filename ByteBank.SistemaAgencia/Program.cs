@@ -14,6 +14,22 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            Lista<int> idades = new Lista<int>();
+
+            idades.Adicionar(12);
+            idades.AdicionarVarios(25, 41, 78, 63, 11);
+
+            for (int i = 0; i < idades.Tamanho; i++)
+            {
+                int idadeAtual = idades[i];
+            }
+
+            Console.ReadLine();
+
+        }
+
+        static void TestaListaObject()
+        {
             ListaDeObject listaDeIdades = new ListaDeObject();
 
             listaDeIdades.Adicionar(10);
@@ -29,7 +45,6 @@ namespace ByteBank.SistemaAgencia
             }
 
             Console.ReadLine();
-
         }
 
         static int SomaVarios(params int[] numeros)
