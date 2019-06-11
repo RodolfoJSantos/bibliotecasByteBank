@@ -9,7 +9,7 @@ namespace ByteBank.Modelos
 
     /// Define uma conta corrente do banco Byte Bank
 
-    public class ContaCorrente
+    public class ContaCorrente : IComparable
     {
         private static int TaxaOperacao;
 
@@ -129,6 +129,31 @@ namespace ByteBank.Modelos
 
             //retorna boleano é o que esperamos para este metodo
             return Agencia == outraConta.Agencia && Numero == outraConta.Numero;
+        }
+
+        public int CompareTo(object obj)
+        {
+            //Renorna negativo quando a instancia precede o obj
+            //Retorna 0 quando a instancia e obj forem equivalentes
+            //Positivo quando obj for precedente
+
+            //(as) pois caso não converta outraConta fica null e não dá excessão
+            //O cast é suficiente para inferir no var
+            var outraConta = obj as ContaCorrente;
+            if (outraConta == null)
+            {
+                return -1;
+            }
+
+            if (Numero < outraConta.Numero)
+            {
+                return -1;
+            }
+            if (Numero == outraConta.Numero)
+            {
+                return 0;
+            }
+            return 1;
         }
     }
 
